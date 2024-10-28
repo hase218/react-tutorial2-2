@@ -16,6 +16,7 @@ export default function App() {
     const [yItem, setYItem] = useState(randomValueFromArray(y));
     const [zItem, setZitem] = useState(randomValueFromArray(z));
 
+    const [story, setStory] = useState("");
     const ukus = "us";
 
     function handleClickResetButton(){
@@ -24,6 +25,12 @@ export default function App() {
       setYItem(randomValueFromArray(y));
       setZitem(randomValueFromArray(z));
       setShowStory(true);
+      setStory(
+        `It was 94 fahrenheit outside, so ${xItem} went for a walk.\
+        When theygot to ${yItem}, they stared in horror for a few moments, then ${zItem}.\
+        ${name == "" ? "Bob" : name} saw the whole thing, \
+        but was not surprised — ${xItem} weighs 300pounds, and it was a hot day.`
+      );
       
     }
     console.log(xItem, yItem, zItem);
@@ -44,10 +51,7 @@ export default function App() {
         </div>
         {showStory && (
           <p>
-            It was 94 fahrenheit outside, so {xItem} went for a walk. When they
-            got to {yItem}, they stared in horror for a few moments, then {zItem}.
-            {name == "" ? "Bob" : name} saw the whole thing, but was not surprised — {xItem} weighs 300
-            pounds, and it was a hot day.
+            {story}
           </p>
         )}
       </>
