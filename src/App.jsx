@@ -17,7 +17,7 @@ export default function App() {
     const [zItem, setZitem] = useState(randomValueFromArray(z));
 
     const [story, setStory] = useState("");
-    const ukus = "us";
+    const [ukus, setUkUs] = useState("us");
 
     function handleClickResetButton(){
       console.log("click");
@@ -31,8 +31,11 @@ export default function App() {
         ${name == "" ? "Bob" : name} saw the whole thing, \
         but was not surprised — ${xItem} weighs 300pounds, and it was a hot day.`
       );
+
+      //useStateはどのタイミングで変わるのか...showStoryの件、setStory内のxItemとか
       
     }
+
     console.log(xItem, yItem, zItem);
     return (
       <>
@@ -42,9 +45,9 @@ export default function App() {
         </div>
         <div>
           <label htmlFor="us">US</label>
-          <input type="radio" value="us" checked={ukus === "us"} />
+          <input value={ukus}onChange={(event)=>{setUkUs("us")}} type="radio" checked={ukus === "us" } />
           <label htmlFor="uk">UK</label>
-          <input type="radio" value="uk" checked={ukus === "uk"} />
+          <input value={ukus}onChange={(event)=>{setUkUs("uk")}}type="radio"  checked={ukus === "uk" } />
         </div>
         <div>
           <button onClick={handleClickResetButton}>Generate random story</button>
