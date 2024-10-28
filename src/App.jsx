@@ -18,6 +18,7 @@ export default function App() {
 
     const [story, setStory] = useState("");
     const [ukus, setUkUs] = useState("us");
+    const [units, setUnits] = useState(["94 fahrenheit", "300pounds"]);
 
     function handleClickResetButton(){
       console.log("click");
@@ -26,10 +27,11 @@ export default function App() {
       setZitem(randomValueFromArray(z));
       setShowStory(true);
       setStory(
-        `It was 94 fahrenheit outside, so ${xItem} went for a walk.\
+        `It was ${ukus === "us" ? "94 fahrenheit" : "34 celsius"} outside, \
+        so ${xItem} went for a walk.\
         When theygot to ${yItem}, they stared in horror for a few moments, then ${zItem}.\
-        ${name == "" ? "Bob" : name} saw the whole thing, \
-        but was not surprised — ${xItem} weighs 300pounds, and it was a hot day.`
+        ${name === "" ? "Bob" : name} saw the whole thing, \
+        but was not surprised — ${xItem} weighs ${ukus === "us" ? "300 pounds" : "21 stone"}, and it was a hot day.`
       );
 
       //useStateはどのタイミングで変わるのか...showStoryの件、setStory内のxItemとか
